@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>4YSE – Yakında · Demnächst · Coming soon</title>
+<meta name="description" content="Yazılışı 4YSE, okunuşu Ayşe. Türkçe · Deutsch · English.">
+<meta name="theme-color" content="#1B0A17">
+<meta property="og:title" content="4YSE – Yakında">
+<meta property="og:description" content="Yazılışı 4YSE, okunuşu Ayşe.">
+<style>
+@font-face{font-family:Anton;font-weight:400;font-display:swap;src:url(anton-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Anton;font-weight:400;font-display:swap;src:url(anton-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Inter;font-weight:500;font-display:swap;src:url(inter-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Inter;font-weight:500;font-display:swap;src:url(inter-latin-ext-500-normal.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{--bg:#1B0A17;--accent:#FF6F9C;--fg:#FFFFFF;--muted:#D2BFCB;--line:#4A2A40}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;font-weight:500}
+body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center}
+.edge{position:fixed;left:0;right:0;height:8px;background:var(--accent)}
+.edge.top{top:0}.edge.bottom{bottom:0}
+.soon{font-family:Anton,Impact,sans-serif;letter-spacing:6px;font-size:clamp(16px,3.2vw,24px);color:var(--accent);margin:0 0 8px}
+.logo{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(110px,30vw,260px);line-height:1;letter-spacing:4px;margin:0;display:flex;justify-content:center}
+.logo .four{color:var(--accent)}
+.bar{width:min(420px,70vw);height:6px;border-radius:3px;background:var(--accent);margin:22px auto 24px}
+.slogan{font-family:Anton,Impact,sans-serif;font-size:clamp(26px,6vw,48px);line-height:1.08;letter-spacing:1px;margin:0}
+.slogan span{color:var(--accent)}
+.state{margin:24px 0 0;font-size:15px;color:var(--muted)}
+.switch{margin-top:32px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.switch button{min-height:44px;padding:10px 20px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-size:15px;letter-spacing:1px;cursor:pointer}
+.switch button:hover,.switch button:focus-visible{border-color:var(--accent)}
+.switch button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+footer{margin-top:40px;font-size:12px;letter-spacing:3px;color:var(--muted)}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="edge top"></div>
+
+<p class="soon" id="soon">YAKINDA</p>
+<h1 class="logo" aria-label="4YSE"><span class="four">4</span><span>YSE</span></h1>
+<div class="bar"></div>
+<p class="slogan" id="slogan">YAZILIŞI 4YSE,<br>OKUNUŞU <span>AYŞE.</span></p>
+
+<p class="state" id="state">Sayfamız yapım aşamasında.</p>
+
+<div class="switch" role="group" aria-label="Dil · Sprache · Language">
+  <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
+  <button type="button" data-lang="de" aria-pressed="false">Deutsch</button>
+  <button type="button" data-lang="en" aria-pressed="false">English</button>
+</div>
+
+<footer>4YSE · <a href="https://mu5a.com">MU5A</a> · <a href="https://xenosmart.de/impressum.html">Impressum</a></footer>
+
+<div class="edge bottom"></div>
+<script>
+(function(){
+var T={
+tr:{soon:"YAKINDA",slogan:"YAZILIŞI 4YSE,<br>OKUNUŞU <span>AYŞE.</span>",state:"Sayfamız yapım aşamasında.",title:"4YSE – Yakında"},
+de:{soon:"DEMNÄCHST",slogan:"GESCHRIEBEN 4YSE,<br>GESPROCHEN <span>AYŞE.</span>",state:"Unsere Seite ist im Aufbau.",title:"4YSE – Demnächst"},
+en:{soon:"COMING SOON",slogan:"WRITTEN 4YSE,<br>PRONOUNCED <span>AYŞE.</span>",state:"Our site is under construction.",title:"4YSE – Coming soon"}
+};
+var btns=document.querySelectorAll(".switch button");
+function set(l){
+var t=T[l];if(!t)return;
+document.documentElement.lang=l;document.title=t.title;
+document.getElementById("soon").textContent=t.soon;
+document.getElementById("slogan").innerHTML=t.slogan;
+document.getElementById("state").textContent=t.state;
+for(var i=0;i<btns.length;i++)btns[i].setAttribute("aria-pressed",btns[i].getAttribute("data-lang")===l?"true":"false");
+}
+for(var i=0;i<btns.length;i++)btns[i].addEventListener("click",function(){set(this.getAttribute("data-lang"));});
+})();
+</script>
+</body>
+</html>
