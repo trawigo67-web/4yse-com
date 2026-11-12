@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>4YSE – Yakında · Demnächst · Coming soon</title>
-<meta name="description" content="Yazılışı 4YSE, okunuşu Ayşe. Sayfa yapım aşamasında – MUSA oyununu şimdi oyna.">
+<meta name="description" content="Yazılışı 4YSE, okunuşu Ayşe. Sayfa yapım aşamasında.">
 <meta name="theme-color" content="#1B0A17">
 <meta property="og:title" content="4YSE – Yakında">
 <meta property="og:description" content="Yazılışı 4YSE, okunuşu Ayşe.">
@@ -25,40 +25,57 @@ body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align
 .bar{width:min(420px,70vw);height:6px;border-radius:3px;background:var(--accent);margin:22px auto 24px}
 .slogan{font-family:Anton,Impact,sans-serif;font-size:clamp(26px,6vw,48px);line-height:1.08;letter-spacing:1px;margin:0}
 .slogan span{color:var(--accent)}
-.status{margin:22px 0 34px;font-size:clamp(12px,2.6vw,15px);letter-spacing:4px;color:var(--muted);text-transform:uppercase;line-height:2}
+.status{margin:22px 0 34px;font-size:clamp(12px,2.6vw,15px);letter-spacing:4px;color:var(--muted);line-height:2}
 .status b{color:var(--fg);font-weight:500}
-.play{display:inline-flex;align-items:center;gap:14px;background:var(--accent);color:#1B0A17;text-decoration:none;font-family:Anton,Impact,sans-serif;font-size:clamp(22px,5vw,30px);letter-spacing:2px;padding:16px 38px;border-radius:14px;box-shadow:0 0 0 0 rgba(255,111,156,.6);animation:pulse 2.2s infinite;transition:transform .15s}
-.play:hover,.play:focus-visible{transform:scale(1.05)}
-.play svg{width:26px;height:26px}
+.langs{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.langs button{min-width:76px;min-height:48px;padding:0 22px;border:2px solid var(--accent);border-radius:14px;background:transparent;color:var(--fg);font-family:Anton,Impact,sans-serif;font-size:22px;letter-spacing:2px;cursor:pointer;transition:transform .15s}
+.langs button:hover,.langs button:focus-visible{transform:scale(1.05)}
+.langs button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
 .sub{margin-top:12px;font-size:13px;letter-spacing:3px;color:var(--muted)}
-footer{margin-top:44px;font-size:12px;letter-spacing:3px;color:#777}
-footer a{color:#999;text-decoration:none}
+footer{margin-top:44px;font-size:12px;letter-spacing:3px;color:#B79FAF}
+footer a{color:#B79FAF;text-decoration:none}
 footer a:hover{color:var(--accent)}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,111,156,.55)}70%{box-shadow:0 0 0 18px rgba(255,111,156,0)}100%{box-shadow:0 0 0 0 rgba(255,111,156,0)}}
-@media (prefers-reduced-motion:reduce){.play{animation:none}}
 </style>
 </head>
 <body>
 <div class="stripe top"></div>
 
-<p class="soon">YAKINDA · DEMNÄCHST · COMING SOON</p>
+<p class="soon" id="soon">YAKINDA</p>
 <h1 class="logo" aria-label="4YSE"><span class="five">4</span><span>YSE</span></h1>
 <div class="bar"></div>
-<p class="slogan">YAZILIŞI 4YSE,<br>OKUNUŞU <span>AYŞE.</span></p>
+<p class="slogan"><span id="s1" style="color:inherit">YAZILIŞI 4YSE,</span><br><span id="s2" style="color:inherit">OKUNUŞU</span> <span>AYŞE.</span></p>
 
 <p class="status">
-  <b>4YSE.com</b> yapım aşamasında<br>
-  <span lang="de">Seite im Aufbau</span> · <span lang="en">Under construction</span>
+  <b>4YSE.com</b><br>
+  <span id="status">YAPIM AŞAMASINDA</span>
 </p>
 
-<a class="play" href="https://xenosmart.de/spiel/musa.html">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>
-  OYUNA BAŞLA
-</a>
-<div class="sub">ZUM SPIEL · PLAY THE GAME</div>
+<div class="langs" role="group" aria-label="Dil · Sprache · Language">
+  <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+  <button type="button" data-lang="de" aria-pressed="false">DE</button>
+  <button type="button" data-lang="en" aria-pressed="false">EN</button>
+</div>
+<div class="sub">TÜRKÇE · DEUTSCH · ENGLISH</div>
 
-<footer>4YSE · ÇAYCUM4 · <a href="https://xenosmart.de/impressum.html">Impressum</a></footer>
+<footer>4YSE · <a href="https://mu5a.com">MU5A</a> · <a href="https://xenosmart.de/impressum.html">Impressum</a></footer>
 
 <div class="stripe bottom"></div>
+<script>
+(function(){
+var T={
+tr:{soon:'YAKINDA',s1:'YAZILIŞI 4YSE,',s2:'OKUNUŞU',status:'YAPIM AŞAMASINDA'},
+de:{soon:'DEMNÄCHST',s1:'GESCHRIEBEN 4YSE,',s2:'GESPROCHEN',status:'SEITE IM AUFBAU'},
+en:{soon:'COMING SOON',s1:'WRITTEN 4YSE,',s2:'PRONOUNCED',status:'UNDER CONSTRUCTION'}
+};
+var btns=document.querySelectorAll('.langs button');
+function set(l){
+var t=T[l];if(!t)return;
+document.documentElement.lang=l;
+['soon','s1','s2','status'].forEach(function(k){document.getElementById(k).textContent=t[k];});
+btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-lang')===l?'true':'false');});
+}
+btns.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-lang'));});});
+})();
+</script>
 </body>
 </html>
